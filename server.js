@@ -48,9 +48,9 @@ app.post('/v1/chat/completions', async (req, res) => {
   const payload = {
     model: nimModel,
     messages: body.messages,
-    temperature: body.temperature ?? 0.7,
-    top_p: body.top_p ?? 1,
-    max_tokens: body.max_tokens ?? 1024,
+    temperature: body.temperature ?? 0.8,
+    top_p: body.top_p ?? 0.92,
+    max_tokens: body.max_tokens ?? 128000,
     stream: isStream
   };
 
