@@ -42,6 +42,7 @@ app.post('/v1/chat/completions', async (req, res) => {
 
   const body = req.body || {};
   const nimModel = MODEL_MAP[body.model] || DEFAULT_MODEL;
+  console.log(`[request] JanitorAI asked for "${body.model}" -> using NIM model "${nimModel}"`);
   const isStream = !!body.stream;
 
   const payload = {
