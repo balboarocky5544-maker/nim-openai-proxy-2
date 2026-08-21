@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: '10mb' }));
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 const NIM_API_KEY = process.env.NIM_API_KEY;   // your NVIDIA key
 const PROXY_KEY = process.env.PROXY_KEY || ''; // optional: your own private password
 const NIM_BASE = 'https://integrate.api.nvidia.com/v1';
@@ -48,8 +48,8 @@ app.post('/v1/chat/completions', async (req, res) => {
   const payload = {
     model: nimModel,
     messages: body.messages,
-    temperature: body.temperature ?? 0.8,
-    top_p: body.top_p ?? 0.92,
+    temperature: body.temperature ?? 0.9,
+    top_p: body.top_p ?? 0.95,
     max_tokens: body.max_tokens ?? 128000,
     stream: isStream
   };
