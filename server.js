@@ -37,6 +37,7 @@ app.get('/v1/models', (req, res) => {
 });
 
 app.post('/v1/chat/completions', async (req, res) => {
+    const startedAt = Date.now();
   if (!checkAuth(req, res)) return;
   if (!NIM_API_KEY) return res.status(500).json({ error: { message: 'NIM_API_KEY not set' } });
 
@@ -73,6 +74,7 @@ app.post('/v1/chat/completions', async (req, res) => {
     }
 
     const data = await nimRes.json();
+    console.log(`[timing] NIM responded in ${Date.now() - startedAt}ms`);
     res.status(nimRes.status).json(data);
   } catch (err) {
     res.status(500).json({ error: { message: err.message } });
