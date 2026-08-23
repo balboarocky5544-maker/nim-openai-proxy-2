@@ -11,7 +11,7 @@ const NIM_API_KEY = process.env.NIM_API_KEY;   // your NVIDIA key
 const PROXY_KEY = process.env.PROXY_KEY || ''; // optional: your own private password
 const NIM_BASE = 'https://integrate.api.nvidia.com/v1';
 
-const DEFAULT_MODEL = 'deepseek-ai/deepseek-v4-flash-0731';
+const DEFAULT_MODEL = 'moonshotai/kimi-k3';
 const MODEL_MAP = {
   'gpt-3.5-turbo': 'meta/llama-3.1-8b-instruct',
   'gpt-4':         'z-ai/glm-5.3',
@@ -51,7 +51,7 @@ app.post('/v1/chat/completions', async (req, res) => {
     messages: body.messages,
     temperature: body.temperature ?? 0.9,
     top_p: body.top_p ?? 0.95,
-    max_tokens: body.max_tokens ?? 5000,
+    max_tokens: body.max_tokens ?? 60000,
     stream: isStream
   };
 
